@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card" *ngIf="!weatherData">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">{{searchMessage}}</h4>
+                    </div>
+                </div>
+                <div class="card" *ngIf="weatherData">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Weather on {{today | date}}</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3> Current time in <strong>{{weatherData.name}}, {{weatherData.sys.country}}</strong>
+                                    is
+                                    {{GetTimeinTimezone(weatherData.timezone) | date: 'shortTime'}}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3>{{weatherData.main.temp | tempConverter: 'F'}} &#8457;</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Min {{weatherData.main.temp_min | tempConverter: 'F'}} &#8457;</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Max {{weatherData.main.temp_max | tempConverter: 'F'}} &#8457;</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Humidity {{weatherData.main.humidity}} %</h5>
+                            </div>
+                        </div>
+                        <h5>Visibility {{weatherData.visibility/1000}} KM</h5>
+                        <h5>Wind Speed {{weatherData.wind.speed * 2.237 | number: '1.0-2'}} mph</h5>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <strong>Feels like {{weatherData.main.feels_like | tempConverter: 'F'}} &#8457;
+                                </strong><br>
+                                <strong *ngFor="let item of weatherData.weather">
+                                    {{item.description}}
+                                </strong>
+                            </div>
+                        </div>
+                        <!-- {{weatherData | json}} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <div class="input-group no-border">
+                <input type="text" class="form-control" [(ngModel)]="searchCity" placeholder="Search city..."
+                    (keyup.enter)="SearchCityWeather()" />
+            </div>
+        </div>
+    </div>
+</nav>
